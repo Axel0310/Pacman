@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacman game</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <script type="module" src="./js/page_animations.js"></script>
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id="main-title">PACMAN 1000000009</h1>
+        <p id="instruction-toggle">Instructions</p>
+    </header>
+    <section id="content">
+        <div id="game-box">
+            <aside class="game-info-panel game-info-pan-is-hidden">
+                <div class="game-info">
+                    <p>Score</p>
+                    <p>0</p>
+                </div>
+                <div class="game-info">
+                    <p>High score</p>
+                    <p>0</p>
+                </div>
+                <div class="game-info">
+                    <p>Life</p>
+                    <div>
+                        <span><i class="fas fa-heart"></i></span>
+                        <span><i class="fas fa-heart"></i></span>
+                        <span><i class="fas fa-heart"></i></span>
+                    </div>
+                </div>
+            </aside>
+            <div id="game-window"></div>
+            <div id="game-menu">
+                <button id="btn-start">Start</button>
+            </div>
+        </div>
+        <aside class="instruction-panel instru-pan-is-hidden">
+            <h2>Put instruction here</h2>
+        </aside>
+    </section>
+    
+</body>
+</html>

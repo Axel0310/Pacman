@@ -1,0 +1,133 @@
+@font-face {
+    font-family: "Pac-Font";
+    src: url("./font/pac-font.ttf");
+}
+
+@font-face {
+    font-family: "bit-wonder";
+    src: url("./font/8-bit-wonder.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: bit-wonder, Arial, Helvetica;
+    font-size: 10px;
+}
+
+header {
+    height: 100px;
+    background-color: #0000cc;
+    position: relative;
+}
+
+#main-title {
+    font-family: Pac-Font;
+    color: whitesmoke;
+    font-size: 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    transform: translate(0, -50%);
+}
+
+#instruction-toggle {
+    color: whitesmoke;
+    position: absolute;
+    font-size: 0.8rem;
+    bottom: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#instruction-toggle:hover {
+    border-bottom: 1px solid white;
+    padding-bottom: 2px;
+}
+
+#content {
+    border: 1px solid red;
+    height: calc(100vh - 100px);
+    position: relative;
+    overflow: hidden;
+}
+
+#game-box {
+    width: 600px;
+    height: 650px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.game-info-panel {
+    background-color: rgba(6, 86, 167, 0.25);
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    z-index: -1;
+    top: 0;
+    transition: top 0.5s ease-out;
+}
+
+.game-info-panel .game-info {
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+#game-window {
+    background-color: black;
+    width: 600px;
+    height: 600px;
+}
+
+#game-menu {
+    border: 1px solid red;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+}
+
+#btn-start {
+    font-family: inherit;
+    width: 80px;
+    height: 30px;
+}
+
+.instruction-panel {
+    background-color: rgba(6, 86, 167, 0.25);
+    width: 300px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px 3px;
+    transition: right 0.5s ease-out;
+}
+
+.instru-pan-hover {
+    right: -290px;
+}
+
+.instru-pan-is-hidden {
+    right: -300px;
+}
+
+.game-info-pan-is-hidden {
+    top: 50px;
+}
