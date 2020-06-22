@@ -1,6 +1,7 @@
 const instruPanel = document.querySelector(".instruction-panel");
 const instruToggle = document.getElementById("instruction-toggle");
 
+
 function toggleInstructionPanel() {
   if (instruPanel.classList.contains("instru-pan-hover")) {
     instruPanel.classList.toggle("instru-pan-hover");
@@ -17,10 +18,10 @@ function moveInInstructionPanel() {
 }
 
 function moveOutInstructionPanel() {
-    if (instruPanel.classList.contains("instru-pan-hover")) {
-        instruPanel.classList.toggle("instru-pan-hover");
-        instruPanel.classList.toggle("instru-pan-is-hidden");
-      }
+  if (instruPanel.classList.contains("instru-pan-hover")) {
+    instruPanel.classList.toggle("instru-pan-hover");
+    instruPanel.classList.toggle("instru-pan-is-hidden");
+  }
 }
 
 function toggleGameInfoPanel() {
