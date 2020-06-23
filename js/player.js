@@ -5,7 +5,7 @@ export class Player {
     this.life = 3;
   }
 
-  updateScore(nb) {
+  increaseScore(nb) {
     this.score += nb;
   }
 

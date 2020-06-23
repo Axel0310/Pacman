@@ -21,14 +21,14 @@
       <aside class="game-info-panel game-info-pan-is-hidden">
         <div class="game-info">
           <p>Score</p>
+          <p id="score">0</p>
+        </div>
+        <div class="game-info">
+          <p id="high-score">High score</p>
           <p>0</p>
         </div>
         <div class="game-info">
-          <p>High score</p>
-          <p>0</p>
-        </div>
-        <div class="game-info">
-          <p>Life</p>
+          <p id="life">Life</p>
           <div>
             <span><i class="fas fa-heart"></i></span>
             <span><i class="fas fa-heart"></i></span>
@@ -37,11 +37,61 @@
         </div>
       </aside>
       <div id="game-window">
-        <div id="pacman"></div>
-        <div class="border-test"></div>
+        <div id="pacman" class="element"></div>
+        <div id="border-1" class="element border">1</div>
+        <div id="border-2" class="element border">2</div>
+        <div id="border-3" class="element border">3</div>
+        <div id="border-4" class="element border">4</div>
+        <div id="border-5" class="element border">5</div>
+        <div id="border-6" class="element border">6</div>
+        <div id="border-7" class="element border">7</div>
+        <div id="border-8" class="element border">8</div>
+        <div id="border-9" class="element border">9</div>
+        <div id="border-10" class="element border">10</div>
+        <div id="border-11" class="element border">11</div>
+        <div id="border-12" class="element border">12</div>
+        <div id="border-13" class="element border">13</div>
+        <div id="border-14" class="element border">14</div>
+        <div id="border-15" class="element border">15</div>
+        <div id="border-16" class="element border">16</div>
+        <div id="border-17" class="element border">17</div>
+        <div id="border-18" class="element border">18</div>
+        <div id="border-19" class="element border">19</div>
+        <div id="border-20" class="element border">20</div>
+        <div id="border-21" class="element border">21</div>
+        <div id="border-22" class="element border">22</div>
+        <div id="border-23" class="element border">23</div>
+        <div id="border-24" class="element border">24</div>
+        <div id="border-25" class="element border">25</div>
+        <div id="border-26" class="element border">26</div>
+        <div id="border-27" class="element border">27</div>
+        <div id="border-28" class="element border">28</div>
+        <div id="border-29" class="element border">29</div>
+        <div id="border-30" class="element border">30</div>
+        <div id="border-31" class="element border">31</div>
+        <div id="border-32" class="element border">32</div>
+        <div id="border-33" class="element border">33</div>
+        <div id="border-34" class="element border">34</div>
+        <div id="border-35" class="element border">35</div>
+        <div id="border-36" class="element border">36</div>
+        <div id="border-37" class="element border">37</div>
+        <div id="border-38" class="element border">38</div>
+        <div id="border-39" class="element border">39</div>
+        <div id="border-40" class="element border">40</div>
+        <div id="border-41" class="element border">41</div>
+        <div id="border-42" class="element border">42</div>
+        <div id="border-43" class="element border">43</div>
+        <div id="border-44" class="element border">44</div>
+        <div id="border-45" class="element border">45</div>
+        <div id="border-46" class="element border">46</div>
+        <div id="border-47" class="element border">47</div>
+        <div id="border-48" class="element border">48</div>
       </div>
+      <div id="lobby-background"></div>
       <div id="game-menu">
-        <button id="btn-start">Start</button>
+        <button id="btn-start" class="btn">Start</button>
+        <button id="btn-resume" class="btn not-displayed">Resume</button>
+        <button id="btn-play-again" class="btn not-displayed">Play again</button>
       </div>
     </div>
     <aside class="instruction-panel instru-pan-is-hidden">

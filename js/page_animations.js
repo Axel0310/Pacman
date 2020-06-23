@@ -30,12 +30,49 @@ function toggleGameInfoPanel() {
     .classList.toggle("game-info-pan-is-hidden");
 }
 
-function startGame() {
-  toggleGameInfoPanel();
-  this.parentNode.style.display = "none";
+function toggleLobbyBackground() {
+  const bgClassList = document.getElementById("lobby-background").classList;
+  bgClassList.toggle("not-displayed");
+  if(document.getElementById("btn-start").classList.contains("not-displayed")){
+    bgClassList.add("bg-pause");
+  }
+
 }
+
+function toggleGameMenu() {
+  document.getElementById("game-menu").classList.toggle("not-displayed");
+}
+
+function toggleStartBtn() {
+  document.getElementById("btn-start").classList.toggle("not-displayed");
+}
+
+function toggleResumeBtn() {
+  document.getElementById("btn-resume").classList.toggle("not-displayed");
+}
+
+function togglePlayAgainBtn() {
+  document.getElementById("btn-play-again").classList.toggle("not-displayed");
+}
+
+function displayGame() {
+  toggleGameInfoPanel();
+  toggleLobbyBackground();
+  toggleGameMenu();
+  toggleStartBtn();
+}
+
+function togglePause(evt){
+  if(evt.repeat === false && evt.key === " "){
+    toggleGameMenu();
+    toggleResumeBtn();
+    toggleLobbyBackground();
+  }
+}
+
 
 instruToggle.onclick = toggleInstructionPanel;
 instruToggle.onmouseover = moveInInstructionPanel;
 instruToggle.onmouseleave = moveOutInstructionPanel;
-document.getElementById("btn-start").onclick = startGame;
+document.getElementById("btn-start").onclick = displayGame;
+document.querySelector("body").onkeydown = togglePause;

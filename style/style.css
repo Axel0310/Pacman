@@ -52,7 +52,6 @@ header {
 }
 
 #content {
-  border: 1px solid red;
   height: calc(100vh - 100px);
   position: relative;
   overflow: hidden;
@@ -90,39 +89,71 @@ header {
   height: 600px;
   display: grid;
   grid-template-rows: repeat(19, 1fr);
-  grid-template-columns: repeat(17, 1fr);
+  grid-template-columns: repeat(19, 1fr);
 }
 
 #game-menu {
-  border: 1px solid red;
+  width: 110px;
+  height: 200px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-content: space-around;
+  z-index: 99;
 }
 
-#btn-start {
+#lobby-background {
+  width: 600px;
+  height: 600px;
+  background-color: darkgrey;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  z-index: 10;
+}
+
+.bg-pause {
+  background-color: rgba(137, 137, 137, 0.70) !important;
+}
+
+.not-displayed {
+  display: none !important;
+}
+
+.btn {
   font-family: inherit;
-  width: 80px;
+  width: 100px;
   height: 30px;
 }
 
 #pacman {
   width: 30px;
   height: 30px;
-  left: 100px;
-  top: 100px;
   background-color: yellow;
   border-radius: 50%;
-  position: absolute;
+  grid-row: 11;
+  grid-column: 10;
+  z-index: 10;
+  place-self: center;
 }
 
 .border {
-  background: red;
-  border: solid 1px yellow;
-  grid-column
+  background: #2b52ff;
+  color: #2b52ff;
+  z-index: 2;
+  padding: 2px;
+}
+
+.ball {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: yellow;
+  place-self: center;
 }
 
 .instruction-panel {
@@ -151,3 +182,250 @@ header {
   top: 50px;
 }
 
+#border-1 {
+  grid-column: 1 / 20;
+  grid-row: 1;
+}
+#border-2 {
+  grid-column: 1;
+  grid-row: 2 / 9;
+}
+
+#border-3 {
+  grid-column: 10;
+  grid-row: 2 / 4;
+}
+
+#border-4 {
+  grid-column: 19;
+  grid-row: 2 / 9;
+}
+
+#border-5 {
+  grid-column: 3 / 5;
+  grid-row: 3;
+}
+
+#border-6 {
+  grid-column: 6 / 9;
+  grid-row: 3;
+}
+
+#border-7 {
+  grid-column: 12 / 15;
+  grid-row: 3;
+}
+
+#border-8 {
+  grid-column: 16 / 18;
+  grid-row: 3;
+}
+
+#border-9 {
+  grid-column: 3 / 5;
+  grid-row: 5;
+}
+
+#border-10 {
+  grid-column: 6;
+  grid-row: 5 / 10;
+}
+
+#border-11 {
+  grid-column: 8 / 13;
+  grid-row: 5;
+}
+
+#border-12 {
+  grid-column: 14;
+  grid-row: 5 / 10;
+}
+
+#border-13 {
+  grid-column: 16 / 18;
+  grid-row: 5;
+}
+
+#border-14 {
+  grid-column: 10;
+  grid-row: 6 / 8;
+}
+
+#border-15 {
+  grid-column: 3 / 5;
+  grid-row: 7;
+}
+
+#border-16 {
+  grid-column: 7 / 9;
+  grid-row: 7;
+}
+
+#border-17 {
+  grid-column: 12 / 14;
+  grid-row: 7;
+}
+
+#border-18 {
+  grid-column: 16 / 18;
+  grid-row: 7;
+}
+
+#border-18 {
+  grid-column: 16 / 18;
+  grid-row: 7;
+}
+
+#border-19 {
+  grid-column: 1 / 5;
+  grid-row: 9;
+}
+
+#border-20 {
+  grid-column: 8 / 13;
+  grid-row: 9 / 11;
+  background-color: black;
+  border: #2b52ff 3px solid;
+  color: black;
+  padding-left: 2px;
+}
+
+#border-21 {
+  grid-column: 16 / 20;
+  grid-row: 9;
+}
+
+#border-22 {
+  grid-column: 1 / 5;
+  grid-row: 11;
+}
+
+#border-23 {
+  grid-column: 6;
+  grid-row: 11 / 14;
+}
+
+#border-24 {
+  grid-column: 14;
+  grid-row: 11 / 14;
+}
+
+#border-25 {
+  grid-column: 16 / 20;
+  grid-row: 11;
+}
+
+#border-26 {
+  grid-column: 1;
+  grid-row: 12 / 19;
+}
+
+#border-27 {
+  grid-column: 8 / 13;
+  grid-row: 12;
+}
+
+#border-28 {
+  grid-column: 19;
+  grid-row: 12 / 20;
+}
+
+#border-29 {
+  grid-column: 3 / 5;
+  grid-row: 13;
+}
+
+#border-30 {
+  grid-column: 10;
+  grid-row: 13 / 15;
+}
+
+#border-31 {
+  grid-column: 16 / 18;
+  grid-row: 13;
+}
+
+#border-32 {
+  grid-column: 4;
+  grid-row: 14;
+}
+
+#border-33 {
+  grid-column: 8;
+  grid-row: 14;
+}
+
+#border-34 {
+  grid-column: 12;
+  grid-row: 14;
+}
+
+#border-35 {
+  grid-column: 16;
+  grid-row: 14;
+}
+
+#border-36 {
+  grid-column: 2;
+  grid-row: 15;
+}
+
+#border-37 {
+  grid-column: 6 / 9;
+  grid-row: 15;
+}
+
+#border-38 {
+  grid-column: 12 / 15;
+  grid-row: 15;
+}
+
+#border-39 {
+  grid-column: 18;
+  grid-row: 15;
+}
+
+#border-40 {
+  grid-column: 4;
+  grid-row: 16;
+}
+
+#border-41 {
+  grid-column: 10;
+  grid-row: 16;
+}
+
+#border-42 {
+  grid-column: 16;
+  grid-row: 16;
+}
+
+#border-43 {
+  grid-column: 3 / 5;
+  grid-row: 17;
+}
+
+#border-44 {
+  grid-column: 6 / 8;
+  grid-row: 17;
+}
+
+#border-45 {
+  grid-column: 9 / 12;
+  grid-row: 17;
+}
+
+#border-46 {
+  grid-column: 13 / 15;
+  grid-row: 17;
+}
+
+#border-47 {
+  grid-column: 16 / 18;
+  grid-row: 17;
+}
+
+#border-48 {
+  grid-column: 1 / 20;
+  grid-row: 19;
+}
