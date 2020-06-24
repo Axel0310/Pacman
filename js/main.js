@@ -15,10 +15,12 @@ function updateScore(nb) {
   document.getElementById("score").textContent = String(player.score);
 }
 
-const pacmanElmt = document.getElementById("pacman");
-
 //Constant used within move functions to define the velocity of pacman and ghosts
-const gameVelocity = 50;
+const gameVelocity = 100;
+//Delay between the release of each ghost
+const ghostDelay = 2000;
+//Menu display delay
+const menuDelay = 2000;
 
 //Function returning an object with the grid position of an element
 export function getGridCoord(elmt) {
@@ -36,19 +38,48 @@ export function getGridCoord(elmt) {
   };
 }
 
-//Pacman object declaration
-// const pacman = {
-//   elmt: () => document.getElementById("pacman"),
-//   mvtTimer: null,
-//   gridCoord: getGridCoord(pacmanElmt),
-// };
-
-const pacman = new Pawn("pacman");
-const inky = new Pawn("inky");
-const pinky = new Pawn("pinky");
-const blinky = new Pawn("blinky");
-const clyde = new Pawn("clyde");
+const pacman = new Pawn("pacman", {
+  initRowStart: 11,
+  initRowEnd: 12,
+  initColStart: 10,
+  initColEnd: 11,
+});
+const inky = new Pawn("inky", {
+  initRowStart: 10,
+  initRowEnd: 11,
+  initColStart: 9,
+  initColEnd: 10,
+});
+const pinky = new Pawn("pinky", {
+  initRowStart: 9,
+  initRowEnd: 10,
+  initColStart: 11,
+  initColEnd: 12,
+});
+const blinky = new Pawn("blinky", {
+  initRowStart: 9,
+  initRowEnd: 10,
+  initColStart: 9,
+  initColEnd: 10,
+});
+const clyde = new Pawn("clyde", {
+  initRowStart: 10,
+  initRowEnd: 11,
+  initColStart: 11,
+  initColEnd: 12,
+});
 const pawnArr = [pacman, inky, pinky, blinky, clyde];
+
+const timerArr = {
+  timers: [],
+  addTimer: function (timer) {
+    this.timers.push(timer);
+  },
+  clearAllTimers: function () {
+    this.timers.forEach((t) => clearTimeout(t));
+    this.timers = [];
+  }
+};
 
 //Create div corresponding to light balls and display them on the grid
 function displayLightBalls() {
@@ -86,12 +117,19 @@ function checkIfWin() {
   } else return false;
 }
 
+function endGameWon(){
+  stopPawns();
+  timerArr.clearAllTimers();
+  displayHighScore();
+  setTimeout(displayGameWon, menuDelay);
+}
+
 //When pacman move on a light ball, remove it from the grid and increase the score
 function eatLightBall(elmt) {
   elmt.remove();
   updateScore(10);
   if (checkIfWin()) {
-    displayGameWon();
+    endGameWon();
   }
 }
 
@@ -100,55 +138,48 @@ function toggleGhostActivation(elmt) {
   elmt.classList.toggle("inactive");
 }
 
-function releaseInky() {
-  setTimeout(inky.shiftRight.bind(inky), gameVelocity);
-  setTimeout(inky.shiftTop.bind(inky), gameVelocity * 2);
-  toggleGhostActivation(inky.elmt());
-}
-
-function releasePinky() {
-  setTimeout(pinky.shiftLeft.bind(pinky), gameVelocity);
-  setTimeout(pinky.shiftTop.bind(pinky), gameVelocity * 2);
-  toggleGhostActivation(pinky.elmt());
-}
-
-function releaseBlinky() {
-  setTimeout(blinky.shiftRight.bind(blinky), gameVelocity);
-  setTimeout(blinky.shiftTop.bind(blinky), gameVelocity * 2);
-  setTimeout(blinky.shiftTop.bind(blinky), gameVelocity * 3);
-  toggleGhostActivation(blinky.elmt());
-}
-
-function releaseClyde() {
-  setTimeout(clyde.shiftLeft.bind(clyde), gameVelocity);
-  setTimeout(clyde.shiftTop.bind(clyde), gameVelocity * 2);
-  setTimeout(clyde.shiftTop.bind(clyde), gameVelocity * 3);
-  toggleGhostActivation(clyde.elmt());
-}
-
 function stopPawns() {
   pawnArr.forEach((pawn) => {
     clearInterval(pawn.mvtTimer);
   });
 }
 
-function endGame() {
-  stopPawns();
-  setTimeout(displayGameOver, 1000);
+function displayHighScore(){
+  player.updateHighScore();
+  document.getElementById("high-score").textContent = String(player.highScore);
+}
+
+function endGameOver() {
+  setTimeout(displayGameOver, menuDelay);
+  displayHighScore();
 }
 
 function loose1Up() {
   player.remove1Up();
   const lifeIconArr = document.querySelectorAll(".heart");
   lifeIconArr[lifeIconArr.length - 1].remove();
-  if (player.checkGameOver() === true) {
-    console.log("Game over");
-    endGame();
-  }
+}
+
+function resetPawns() {
+  pawnArr.forEach((pawn) => {
+    pawn.resetCoord();
+    if (pawn.elmt().classList.contains("ghost")) {
+      toggleGhostActivation(pawn.elmt());
+      pawn.previousMove = "top";
+    }
+  });
 }
 
 function getCaught() {
   loose1Up();
+  stopPawns();
+  timerArr.clearAllTimers();
+  if (player.checkGameOver() === false) {
+    setTimeout(resetPawns, 2000);
+    setTimeout(releaseGhosts, 2000);
+  } else {
+    endGameOver();
+  }
 }
 
 //Array containing all the elements in the game window (pacman, ghosts, balls, borders)
@@ -301,7 +332,7 @@ function movePacman(evt) {
 }
 
 function checkGhostPossibleMove(ghost, dirArr) {
-  for(let i = 0; i < dirArr.length; i++){
+  for (let i = 0; i < dirArr.length; i++) {
     var obstacle = null;
     if (dirArr[i] === "top") {
       obstacle = detectCollision(
@@ -334,17 +365,17 @@ function checkGhostPossibleMove(ghost, dirArr) {
         i--;
       }
     }
-  };
+  }
   return dirArr;
 }
 
 //Remove the opposite direction of the previous move
-function avoidComeBack(ghost, dirArr){
-  if(ghost.previousMove === "top"){
+function avoidComeBack(ghost, dirArr) {
+  if (ghost.previousMove === "top") {
     dirArr.splice(2, 1);
-  } else if (ghost.previousMove === "right"){
+  } else if (ghost.previousMove === "right") {
     dirArr.splice(3, 1);
-  } else if (ghost.previousMove === "down"){
+  } else if (ghost.previousMove === "down") {
     dirArr.splice(0, 1);
   } else {
     dirArr.splice(1, 1);
@@ -371,8 +402,13 @@ function shiftGhostRandom(ghost) {
     ghost.shiftLeft();
     ghost.previousMove = "left";
   }
+  if (
+    pacman.gridCoord.rowStart === ghost.gridCoord.rowStart &&
+    pacman.gridCoord.columnStart === ghost.gridCoord.columnStart
+  ) {
+    getCaught();
+  }
 }
-
 
 function moveGhostRandom(ghost) {
   ghost.mvtTimer = setInterval(
@@ -381,7 +417,77 @@ function moveGhostRandom(ghost) {
   );
 }
 
-// moveGhostRandom(inky);
+function releaseBlinky() {
+  let timer = null;
+  timer = setTimeout(blinky.shiftRight.bind(blinky), gameVelocity);
+  timerArr.addTimer(timer);
+  timer = setTimeout(blinky.shiftTop.bind(blinky), gameVelocity * 2);
+  timerArr.addTimer(timer);
+  toggleGhostActivation(blinky.elmt());
+  timer = setTimeout(moveGhostRandom.bind(this, blinky), gameVelocity * 3);
+  timerArr.addTimer(timer);
+}
+
+function releasePinky() {
+  let timer = null;
+  timer = setTimeout(pinky.shiftLeft.bind(pinky), gameVelocity);
+  timerArr.addTimer(timer);
+  timer = setTimeout(pinky.shiftTop.bind(pinky), gameVelocity * 2);
+  timerArr.addTimer(timer);
+  toggleGhostActivation(pinky.elmt());
+  timer = setTimeout(moveGhostRandom.bind(this, pinky), gameVelocity * 3);
+  timerArr.addTimer(timer);
+}
+
+function releaseInky() {
+  let timer = null;
+  timer = setTimeout(inky.shiftRight.bind(inky), gameVelocity);
+  timerArr.addTimer(timer);
+  timer = setTimeout(inky.shiftTop.bind(inky), gameVelocity * 2);
+  timerArr.addTimer(timer);
+  timer = setTimeout(inky.shiftTop.bind(inky), gameVelocity * 3);
+  timerArr.addTimer(timer);
+  toggleGhostActivation(inky.elmt());
+  timer = setTimeout(moveGhostRandom.bind(this, inky), gameVelocity * 4);
+  timerArr.addTimer(timer);
+}
+
+function releaseClyde() {
+  let timer = null;
+  timer = setTimeout(clyde.shiftLeft.bind(clyde), gameVelocity);
+  timerArr.addTimer(timer);
+  timer = setTimeout(clyde.shiftTop.bind(clyde), gameVelocity * 2);
+  timerArr.addTimer(timer);
+  timer = setTimeout(clyde.shiftTop.bind(clyde), gameVelocity * 3);
+  timerArr.addTimer(timer);
+  toggleGhostActivation(clyde.elmt());
+  timer = setTimeout(moveGhostRandom.bind(this, clyde), gameVelocity * 4);
+  timerArr.addTimer(timer);
+}
+
+function releaseGhosts() {
+  let timer = null;
+  timer = setTimeout(releaseBlinky, ghostDelay);
+  timerArr.addTimer(timer);
+  timer = setTimeout(releasePinky, ghostDelay * 2);
+  timerArr.addTimer(timer);
+  timer = setTimeout(releaseInky, ghostDelay * 3);
+  timerArr.addTimer(timer);
+  timer = setTimeout(releaseClyde, ghostDelay * 4);
+  timerArr.addTimer(timer);
+}
+
+function startGame() {
+  displayGame();
+  releaseGhosts();
+}
+
+function resetGame(){
+  resetPawns();
+  displayLightBalls();
+  displayRestartedGame();
+  releaseGhosts();
+}
 
 function pauseGame(evt) {
   if (
@@ -396,9 +502,6 @@ function pauseGame(evt) {
 
 document.onkeydown = movePacman;
 
-document.getElementById("btn-start").onclick = displayGame;
-document.getElementById("btn-play-again").onclick = displayRestartedGame;
+document.getElementById("btn-start").onclick = startGame;
+document.getElementById("btn-play-again").onclick = resetGame;
 document.querySelector("body").onkeydown = pauseGame;
-
-//For dev purpose, to be removed
-displayGame();

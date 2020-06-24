@@ -92,7 +92,11 @@ export function togglePause(evt) {
 }
 
 export function displayRestartedGame() {
-  toggleGameOverMsg();
+  if(document.getElementById("win-message").classList.contains("not-displayed")){
+    toggleGameWonMsg();
+  } else {
+    toggleGameOverMsg();
+  }
   toggleGameMenu();
   toggleLobbyBackground();
 }

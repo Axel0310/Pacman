@@ -1,12 +1,13 @@
 import { getGridCoord } from "./main.js";
 
 export class Pawn {
-  constructor(elmtId) {
+  constructor(elmtId, initCoord) {
     this.id = elmtId;
     this.elmt = () => document.getElementById(elmtId);
     this.mvtTimer = null;
     this.gridCoord = getGridCoord(document.getElementById(elmtId));
-    this.previousMove = "top";
+    this.previousMove = "top"; //Only used for ghosts
+    this.initCoord = initCoord;
   }
 
   //Move a pawn (pacman or ghost) 1 cell up on the grid
@@ -42,4 +43,17 @@ export class Pawn {
     this.elmt().style.gridColumnStart = String(this.gridCoord.columnStart);
     this.elmt().style.gridColumnEnd = String(this.gridCoord.columnEnd);
   }
+
+  resetCoord(){
+    this.gridCoord.rowStart = this.initCoord.initRowStart;
+    this.gridCoord.rowEnd = this.initCoord.initRowEnd;
+    this.gridCoord.columnStart = this.initCoord.initColStart;
+    this.gridCoord.columnEnd = this.initCoord.initColEnd;
+
+    this.elmt().style.gridRowStart = String(this.gridCoord.rowStart);
+    this.elmt().style.gridRowEnd = String(this.gridCoord.rowEnd);
+    this.elmt().style.gridColumnStart = String(this.gridCoord.columnStart);
+    this.elmt().style.gridColumnEnd = String(this.gridCoord.columnEnd);
+  }
+
 }
