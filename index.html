@@ -30,14 +30,18 @@
         <div class="game-info">
           <p id="life">Life</p>
           <div>
-            <span><i class="fas fa-heart"></i></span>
-            <span><i class="fas fa-heart"></i></span>
-            <span><i class="fas fa-heart"></i></span>
+            <span class="heart"><i class="fas fa-heart"></i></span>
+            <span class="heart"><i class="fas fa-heart"></i></span>
+            <span class="heart"><i class="fas fa-heart"></i></span>
           </div>
         </div>
       </aside>
       <div id="game-window">
-        <div id="pacman" class="element"></div>
+        <div id="pacman" class="element pacman"></div>
+        <div id="inky" class="element ghost inactive"></div>
+        <div id="pinky" class="element ghost inactive"></div>
+        <div id="blinky" class="element ghost inactive"></div>
+        <div id="clyde" class="element ghost inactive"></div>
         <div id="border-1" class="element border">1</div>
         <div id="border-2" class="element border">2</div>
         <div id="border-3" class="element border">3</div>
@@ -89,6 +93,9 @@
       </div>
       <div id="lobby-background"></div>
       <div id="game-menu">
+        <p id="win-message" class="message not-displayed">You won !</p>
+        <p id="loose-message" class="message not-displayed">Looser !</p>
+        <p id="pause-message" class="message not-displayed">Game paused</p>
         <button id="btn-start" class="btn">Start</button>
         <button id="btn-resume" class="btn not-displayed">Resume</button>
         <button id="btn-play-again" class="btn not-displayed">Play again</button>

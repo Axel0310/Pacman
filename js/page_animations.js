@@ -1,7 +1,6 @@
 const instruPanel = document.querySelector(".instruction-panel");
 const instruToggle = document.getElementById("instruction-toggle");
 
-
 function toggleInstructionPanel() {
   if (instruPanel.classList.contains("instru-pan-hover")) {
     instruPanel.classList.toggle("instru-pan-hover");
@@ -33,10 +32,11 @@ function toggleGameInfoPanel() {
 function toggleLobbyBackground() {
   const bgClassList = document.getElementById("lobby-background").classList;
   bgClassList.toggle("not-displayed");
-  if(document.getElementById("btn-start").classList.contains("not-displayed")){
+  if (
+    document.getElementById("btn-start").classList.contains("not-displayed")
+  ) {
     bgClassList.add("bg-pause");
   }
-
 }
 
 function toggleGameMenu() {
@@ -55,24 +55,51 @@ function togglePlayAgainBtn() {
   document.getElementById("btn-play-again").classList.toggle("not-displayed");
 }
 
-function displayGame() {
+function toggleGameOverMsg() {
+  document.getElementById("loose-message").classList.toggle("not-displayed");
+}
+
+function toggleGameWonMsg() {
+  document.getElementById("win-message").classList.toggle("not-displayed");
+}
+
+export function displayGame() {
   toggleGameInfoPanel();
   toggleLobbyBackground();
   toggleGameMenu();
   toggleStartBtn();
 }
 
-function togglePause(evt){
-  if(evt.repeat === false && evt.key === " "){
-    toggleGameMenu();
-    toggleResumeBtn();
-    toggleLobbyBackground();
-  }
+export function displayGameOver() {
+  toggleGameOverMsg();
+  toggleGameMenu();
+  togglePlayAgainBtn();
+  toggleLobbyBackground();
 }
 
+export function displayGameWon() {
+  toggleGameWonMsg();
+  toggleGameMenu();
+  togglePlayAgainBtn();
+  toggleLobbyBackground();
+}
+
+export function togglePause(evt) {
+  document.getElementById("pause-message").classList.toggle("not-displayed");
+  toggleGameMenu();
+  toggleResumeBtn();
+  toggleLobbyBackground();
+}
+
+export function displayRestartedGame() {
+  toggleGameOverMsg();
+  toggleGameMenu();
+  toggleLobbyBackground();
+}
 
 instruToggle.onclick = toggleInstructionPanel;
 instruToggle.onmouseover = moveInInstructionPanel;
 instruToggle.onmouseleave = moveOutInstructionPanel;
-document.getElementById("btn-start").onclick = displayGame;
-document.querySelector("body").onkeydown = togglePause;
+// document.getElementById("btn-start").onclick = displayGame;
+// document.getElementById("btn-play-again").onclick = displayRestartedGame;
+// document.querySelector("body").onkeydown = togglePause;

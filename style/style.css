@@ -92,9 +92,22 @@ header {
   grid-template-columns: repeat(19, 1fr);
 }
 
+.message {
+  width: 200px;
+  height: 50px;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: whitesmoke;
+  background-color: darkblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 #game-menu {
-  width: 110px;
-  height: 200px;
+  width: 200px;
+  height: fit-content;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -131,14 +144,45 @@ header {
 }
 
 #pacman {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   background-color: yellow;
   border-radius: 50%;
   grid-row: 11;
   grid-column: 10;
   z-index: 10;
   place-self: center;
+}
+
+.ghost {
+  width: 22px;
+  height: 22px;
+  z-index: 10;
+  place-self: center;
+}
+
+#inky {
+  background-color: lightskyblue;
+  grid-row: 8 / 9;
+  grid-column: 10 / 11;
+}
+
+#pinky {
+  background-color: palevioletred;
+  grid-row: 9 / 10;
+  grid-column: 11 / 12;
+}
+
+#blinky {
+  background-color: red;
+  grid-row: 10 / 11;
+  grid-column: 9 / 10;
+}
+
+#clyde {
+  background-color: lightsalmon;
+  grid-row: 10 / 11;
+  grid-column: 11 / 12;
 }
 
 .border {
