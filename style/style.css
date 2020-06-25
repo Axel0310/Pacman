@@ -15,26 +15,61 @@
 }
 
 body {
-  /* width: 100vw;
-  height: 100vh; */
   font-family: bit-wonder, Arial, Helvetica;
   font-size: 10px;
 }
 
 header {
   height: 100px;
-  background-color: #0000cc;
   position: relative;
+  background: url("./images/brick-wall.jpg") center / 100% 400% no-repeat;
 }
 
 #main-title {
   font-family: Pac-Font;
-  color: whitesmoke;
-  font-size: 3rem;
+  width: 800px;
+  font-size: 1.6rem;
   position: absolute;
   top: 50%;
-  left: 50px;
-  transform: translate(0, -50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.strd-font {
+  font-family: bit-wonder;
+}
+
+ #pacman-title {
+   margin: 0 30px;
+   color: #426DFB;
+   text-shadow: 0 0 3vw #2356FF;
+   animation: neon 2s linear infinite;
+  -moz-animation: neon 2s linear infinite;
+  -webkit-animation: neon 2s linear infinite;
+  -o-animation: neon 2s linear infinite;
+ }
+
+ .title-img {
+  font-size: 3.5rem;
+  color: #f0de3cda;
+  text-shadow: 0 0 1vw #1041FF, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, 0 0 .4vw #8BFDFE, .5vw .5vw .1vw #147280;
+  
+ }
+
+ @keyframes neon {
+  0%,
+  100% {
+    text-shadow: 0 0 1vw #1041FF, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, 0 0 .4vw #8BFDFE, .5vw .5vw .1vw #147280;
+    color: #28D7FE;
+  }
+  50% {
+    text-shadow: 0 0 .5vw #082180, 0 0 1.5vw #082180, 0 0 5vw #082180, 0 0 5vw #082180, 0 0 .2vw #082180, .5vw .5vw .1vw #0A3940;
+    color: #146C80;
+  }
 }
 
 #instruction-toggle {
@@ -51,10 +86,49 @@ header {
   padding-bottom: 2px;
 }
 
+.instruction-panel {
+  background-color: rgba(6, 86, 167, 0.50);
+  color: white;
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 3px;
+  transition: right 0.5s ease-out;
+  text-align: center;
+}
+
+.instru-pan-hover {
+  right: -290px;
+}
+
+.sub-instru {
+  margin: 20px 10px;
+}
+
+.instru-text {
+  margin-top: 10px;
+}
+
+.instruction-panel .ghost {
+  background: url("./images/blinky-top.png") center / contain no-repeat ;
+}
+
+.instru-pic {
+  width: 60px;
+  background-color: white;
+}
+
 #content {
   height: calc(100vh - 100px);
   position: relative;
   overflow: hidden;
+  background: url("./images/arcade-bg.jpg") center / cover no-repeat;
 }
 
 #game-box {
@@ -67,7 +141,7 @@ header {
 }
 
 .game-info-panel {
-  background-color: rgba(6, 86, 167, 0.25);
+  background-color: rgba(6, 86, 167);
   height: 50px;
   display: flex;
   justify-content: space-around;
@@ -122,15 +196,16 @@ header {
 #lobby-background {
   width: 600px;
   height: 600px;
-  background-color: darkgrey;
+  background-color: black;
   position: absolute;
   top: 50px;
   left: 0;
   z-index: 10;
+  background: url("https://media.giphy.com/media/3Z1fKb6plPLM3hMbLs/giphy.gif") center / contain no-repeat black ;
 }
 
 .bg-pause {
-  background-color: rgba(137, 137, 137, 0.70) !important;
+  background: rgba(137, 137, 137, 0.70) !important;
 }
 
 .not-displayed {
@@ -211,23 +286,6 @@ header {
   place-self: center;
 }
 
-.instruction-panel {
-  background-color: rgba(6, 86, 167, 0.25);
-  width: 300px;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 10px 3px;
-  transition: right 0.5s ease-out;
-}
-
-.instru-pan-hover {
-  right: -290px;
-}
 
 .instru-pan-is-hidden {
   right: -300px;
@@ -241,6 +299,7 @@ header {
   grid-column: 1 / 20;
   grid-row: 1;
 }
+
 #border-2 {
   grid-column: 1;
   grid-row: 2 / 9;

@@ -13,7 +13,11 @@
 </head>
 <body>
   <header>
-    <h1 id="main-title">PACMAN 1000000009</h1>
+    <div id="main-title">
+      <p id="title-img-1" class="title-img">1 0 0 0</p>
+      <h1 id="pacman-title">PAC<span class="strd-font">-</span>MAN</h1>
+      <p id="title-img-1" class="title-img">0 0 0 9</p>
+    </div>
     <p id="instruction-toggle">Instructions</p>
   </header>
   <section id="content">
@@ -102,7 +106,22 @@
       </div>
     </div>
     <aside class="instruction-panel instru-pan-is-hidden">
-      <h2>Put instruction here</h2>
+      <div class="sub-instru">
+        <img class="instru-pic" src="./style/images/arrows.svg" alt="Keyboard arrows">
+        <p class="instru-text">Move Pacman with the keyboard arrows</p>
+      </div>
+      <div class="sub-instru">
+        <div class="ball"> </div>
+        <p class="instru-text">Eat all pac-dots to win</p>
+      </div>
+      <div class="sub-instru">
+        <div class="ghost"></div>
+        <p class="instru-text">Ghosts want to catch Pacman, avoid them !</p>
+      </div>
+      <div class="sub-instru">
+        <div class="powerball"> </div>
+        <p class="instru-text">Energizers will allow Pacman to catch ghosts during 10 seconds !</p>
+      </div>
     </aside>
   </section>
 </body>
