@@ -1,13 +1,14 @@
 import { getGridCoord } from "./main.js";
 
 export class Pawn {
-  constructor(elmtId, initCoord) {
+  constructor(elmtId, initCoord, bgImg) {
     this.id = elmtId;
     this.elmt = () => document.getElementById(elmtId);
     this.mvtTimer = null;
     this.gridCoord = getGridCoord(document.getElementById(elmtId));
     this.previousMove = "top"; //Only used for ghosts
     this.initCoord = initCoord;
+    this.bgImg = bgImg; //Contains [imgTop, imgRight, imgDown, imgLeft]
   }
 
   //Move a pawn (pacman or ghost) 1 cell up on the grid
@@ -16,6 +17,7 @@ export class Pawn {
     this.gridCoord.rowEnd--;
     this.elmt().style.gridRowStart = String(this.gridCoord.rowStart);
     this.elmt().style.gridRowEnd = String(this.gridCoord.rowEnd);
+    this.elmt().style.backgroundImage = `url(${this.bgImg[0]})`;
   }
 
   //Move a pawn (pacman or ghost) 1 cell right on the grid
@@ -25,6 +27,7 @@ export class Pawn {
     this.gridCoord.columnEnd = this.gridCoord.columnStart + 1;
     this.elmt().style.gridColumnStart = String(this.gridCoord.columnStart);
     this.elmt().style.gridColumnEnd = String(this.gridCoord.columnEnd);
+    this.elmt().style.backgroundImage = `url(${this.bgImg[1]})`;
   }
 
   //Move a pawn (pacman or ghost) 1 cell down on the grid
@@ -33,6 +36,7 @@ export class Pawn {
     this.gridCoord.rowEnd++;
     this.elmt().style.gridRowStart = String(this.gridCoord.rowStart);
     this.elmt().style.gridRowEnd = String(this.gridCoord.rowEnd);
+    this.elmt().style.backgroundImage = `url(${this.bgImg[2]})`;
   }
 
   //Move a pawn (pacman or ghost) 1 cell left on the grid
@@ -42,6 +46,7 @@ export class Pawn {
     this.gridCoord.columnEnd = this.gridCoord.columnStart + 1;
     this.elmt().style.gridColumnStart = String(this.gridCoord.columnStart);
     this.elmt().style.gridColumnEnd = String(this.gridCoord.columnEnd);
+    this.elmt().style.backgroundImage = `url(${this.bgImg[3]})`;
   }
 
   resetCoord(){

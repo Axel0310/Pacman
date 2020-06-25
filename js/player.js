@@ -27,7 +27,7 @@ export class Player {
     return this.life === 0;
   }
 
-  resetGame() {
+  resetPlayer() {
     this.score = 0;
     this.life = 3;
   }

@@ -146,8 +146,7 @@ header {
 #pacman {
   width: 25px;
   height: 25px;
-  background-color: yellow;
-  border-radius: 50%;
+  background: url("./images/pacman-right.png") center / contain no-repeat ;
   grid-row: 11;
   grid-column: 10;
   z-index: 10;
@@ -155,34 +154,38 @@ header {
 }
 
 .ghost {
-  width: 22px;
-  height: 22px;
+  width: 25px;
+  height: 25px;
   z-index: 10;
   place-self: center;
 }
 
 #inky {
-  background-color: lightskyblue;
   grid-row: 10 / 11;
   grid-column: 9 / 10;
+  background: url("./images/inky-top.png") center / contain no-repeat ;
 }
 
 #pinky {
-  background-color: palevioletred;
   grid-row: 9 / 10;
   grid-column: 11 / 12;
+  background: url("./images/pinky-top.png") center / contain no-repeat ;
 }
 
 #blinky {
-  background-color: red;
   grid-row: 9 / 10;
   grid-column: 9 / 10;
+  background: url("./images/blinky-top.png") center / contain no-repeat ;
 }
 
 #clyde {
-  background-color: lightsalmon;
   grid-row: 10 / 11;
   grid-column: 11 / 12;
+  background: url("./images/clyde-top.png") center / contain no-repeat ;
+}
+
+.scared {
+  background-image: url("./images/ghost-prey.png") !important;
 }
 
 .border {
@@ -197,6 +200,14 @@ header {
   height: 5px;
   border-radius: 50%;
   background-color: yellow;
+  place-self: center;
+}
+
+.powerball {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: rgb(255, 0, 200);
   place-self: center;
 }
 
