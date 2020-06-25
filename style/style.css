@@ -47,17 +47,17 @@ header {
    margin: 0 30px;
    color: #426DFB;
    text-shadow: 0 0 3vw #2356FF;
-   animation: neon 2s linear infinite;
-  -moz-animation: neon 2s linear infinite;
-  -webkit-animation: neon 2s linear infinite;
-  -o-animation: neon 2s linear infinite;
+   animation: neon 2.5s linear infinite;
+  -moz-animation: neon 2.5s linear infinite;
+  -webkit-animation: neon 2.5s linear infinite;
+  -o-animation: neon 2.5s linear infinite;
  }
 
  .title-img {
   font-size: 3.5rem;
   color: #f0de3cda;
-  text-shadow: 0 0 1vw #1041FF, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, 0 0 .4vw #8BFDFE, .5vw .5vw .1vw #147280;
-  
+  /* text-shadow: 0 0 1vw #1041FF, 0 0 3vw #1041FF, 0 0 10vw #1041FF, 0 0 10vw #1041FF, 0 0 .4vw #8BFDFE, .5vw .5vw .1vw #147280; */
+  text-shadow: 0 0 2px #1041FF, 0 0 5px #1041FF, 0 0 8px #1041FF, 0 0 8px #1041FF, 0 0 2px #8BFDFE, 3px 5px 3px #147280;
  }
 
  @keyframes neon {
@@ -87,7 +87,7 @@ header {
 }
 
 .instruction-panel {
-  background-color: rgba(6, 86, 167, 0.50);
+  background-color: rgba(6, 86, 167, 0.90);
   color: white;
   width: 300px;
   height: 100%;
@@ -108,20 +108,39 @@ header {
 }
 
 .sub-instru {
-  margin: 20px 10px;
+  margin: 35px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .instru-text {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
-.instruction-panel .ghost {
+#instru-ball {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: yellow;
+}
+
+#instru-ghost {
+  width: 25px;
+  height: 25px;
   background: url("./images/blinky-top.png") center / contain no-repeat ;
 }
 
 .instru-pic {
   width: 60px;
-  background-color: white;
+}
+
+#instru-energizer {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgb(255, 0, 200);
 }
 
 #content {
@@ -141,7 +160,7 @@ header {
 }
 
 .game-info-panel {
-  background-color: rgba(6, 86, 167);
+  background-color: hsl(0, 0%, 79%);
   height: 50px;
   display: flex;
   justify-content: space-around;
@@ -150,6 +169,7 @@ header {
   z-index: -1;
   top: 0;
   transition: top 0.5s ease-out;
+  z-index: 10;
 }
 
 .game-info-panel .game-info {
@@ -164,6 +184,7 @@ header {
   display: grid;
   grid-template-rows: repeat(19, 1fr);
   grid-template-columns: repeat(19, 1fr);
+  transition: box-shadow 1s cubic-bezier(0,1.13,.64,1);
 }
 
 .message {
@@ -206,6 +227,10 @@ header {
 
 .bg-pause {
   background: rgba(137, 137, 137, 0.70) !important;
+}
+
+.screen-on{
+  box-shadow: 0 0 80px white, 0 0 10px gold;
 }
 
 .not-displayed {

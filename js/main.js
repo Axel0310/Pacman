@@ -11,7 +11,7 @@ import { Pawn } from "./pawn.js";
 const player = new Player();
 
 //Constant used within move functions to define the velocity of pacman and ghosts
-const gameVelocity = 500;
+const gameVelocity = 350;
 //Delay between the release of each ghost
 const ghostDelay = 2000;
 //Menu display delay

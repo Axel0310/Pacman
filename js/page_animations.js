@@ -39,6 +39,10 @@ function toggleLobbyBackground() {
   }
 }
 
+function screenSwitchOn(){
+  document.getElementById("game-window").classList.add("screen-on");
+}
+
 function toggleGameMenu() {
   document.getElementById("game-menu").classList.toggle("not-displayed");
 }
@@ -64,6 +68,7 @@ function toggleGameWonMsg() {
 }
 
 export function displayGame() {
+  screenSwitchOn();
   toggleGameInfoPanel();
   toggleLobbyBackground();
   toggleGameMenu();
