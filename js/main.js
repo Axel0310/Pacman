@@ -22,6 +22,7 @@ const ghostPreyPeriod = 10000;
 
 let removeGhostPreyTimer = null;
 let warningTimer = null;
+let warningTimerDelay = null;
 
 //Function returning an object with the grid position of an element
 export function getGridCoord(elmt) {
@@ -210,6 +211,9 @@ function makeGhostPrey() {
   if(warningTimer !== null){
     clearInterval(warningTimer);
   }
+  if(warningTimerDelay != null){
+    clearTimeout(warningTimerDelay);
+  }
   pawnArr.forEach((pawn) => {
     if (pawn.id !== "pacman") {
       pawn.elmt().classList.add("prey");
@@ -220,6 +224,7 @@ function makeGhostPrey() {
   removeGhostPreyTimer = timer;
   timerArr.addTimer(timer);
   timer = setTimeout(warnEndOfEnergizer, ghostPreyPeriod - 3000);
+  warningTimerDelay = timer;
   timerArr.addTimer(timer);
 }
 
