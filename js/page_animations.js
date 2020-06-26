@@ -42,6 +42,9 @@ function toggleLobbyBackground() {
 
 function screenSwitchOn(){
   document.getElementById("game-window").classList.add("screen-on");
+  document.querySelectorAll(".border").forEach( border => {
+    border.classList.add("border-shadow");
+  })
 }
 
 function toggleGameMenu() {

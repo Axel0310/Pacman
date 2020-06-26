@@ -198,20 +198,21 @@ header {
 
 .game-info-panel {
   background-color: hsl(0, 0%, 79%);
+  border-radius: 10px;
   height: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: relative;
-  z-index: -1;
   top: 0;
   transition: top 0.5s ease-out;
-  z-index: 10;
+  z-index: -1;
 }
 
 .game-info-panel .game-info {
   font-size: 0.8rem;
   text-align: center;
+  z-index: 10;
 }
 
 .game-info-pan-is-hidden {
@@ -330,10 +331,15 @@ header {
 }
 
 .border {
-  background: #2b52ff;
-  color: #2b52ff;
+  border: 3px #2b52ff solid;
+  border-radius: 8px;
+  color: black;
   z-index: 2;
   padding: 2px;
+}
+
+.border-shadow {
+  box-shadow: 1px 1px 1px #ff00dd80, 2px 2px 1px #ff008080, 3px 3px 1px #ff000080;
 }
 
 .ball {
@@ -498,7 +504,7 @@ header {
 
 #border-28 {
   grid-column: 19;
-  grid-row: 12 / 20;
+  grid-row: 12 / 19;
 }
 
 #border-29 {
