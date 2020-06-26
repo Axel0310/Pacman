@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Pac-Font";
-  src: url("./font/pac-font.ttf");
+  src: url("./style/font/pac-font.ttf");
 }
 
 @font-face {
   font-family: "bit-wonder";
-  src: url("./font/8-bit-wonder.ttf");
+  src: url("./style/font/8-bit-wonder.ttf");
 }
 
 * {
@@ -22,7 +22,7 @@ body {
 header {
   height: 100px;
   position: relative;
-  background: url("./images/brick-wall.jpg") center / 100% 400% no-repeat;
+  background: url("./style/images/brick-wall.jpg") center / 100% 400% no-repeat;
 }
 
 #main-title {
@@ -129,7 +129,7 @@ header {
 #instru-ghost {
   width: 25px;
   height: 25px;
-  background: url("./images/blinky-top.png") center / contain no-repeat ;
+  background: url("./style/images/blinky-top.png") center / contain no-repeat ;
 }
 
 .instru-pic {
@@ -147,7 +147,7 @@ header {
   height: calc(100vh - 100px);
   position: relative;
   overflow: hidden;
-  background: url("./images/arcade-bg.jpg") center / cover no-repeat;
+  background: url("./style/images/arcade-bg.jpg") center / cover no-repeat;
 }
 
 #game-box {
@@ -246,7 +246,7 @@ header {
 #pacman {
   width: 25px;
   height: 25px;
-  background: url("./images/pacman-right.png") center / contain no-repeat ;
+  background: url("./style/images/pacman-right.png") center / contain no-repeat ;
   grid-row: 11;
   grid-column: 10;
   z-index: 10;
@@ -263,29 +263,29 @@ header {
 #inky {
   grid-row: 10 / 11;
   grid-column: 9 / 10;
-  background: url("./images/inky-top.png") center / contain no-repeat ;
+  background: url("./style/images/inky-top.png") center / contain no-repeat ;
 }
 
 #pinky {
   grid-row: 9 / 10;
   grid-column: 11 / 12;
-  background: url("./images/pinky-top.png") center / contain no-repeat ;
+  background: url("./style/images/pinky-top.png") center / contain no-repeat ;
 }
 
 #blinky {
   grid-row: 9 / 10;
   grid-column: 9 / 10;
-  background: url("./images/blinky-top.png") center / contain no-repeat ;
+  background: url("./style/images/blinky-top.png") center / contain no-repeat ;
 }
 
 #clyde {
   grid-row: 10 / 11;
   grid-column: 11 / 12;
-  background: url("./images/clyde-top.png") center / contain no-repeat ;
+  background: url("./style/images/clyde-top.png") center / contain no-repeat ;
 }
 
 .scared {
-  background-image: url("./images/ghost-prey.png") !important;
+  background-image: url("./style/images/ghost-prey.png") !important;
 }
 
 .border {

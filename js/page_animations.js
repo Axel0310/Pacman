@@ -110,6 +110,3 @@ export function displayRestartedGame() {
 instruToggle.onclick = toggleInstructionPanel;
 instruToggle.onmouseover = moveInInstructionPanel;
 instruToggle.onmouseleave = moveOutInstructionPanel;
-// document.getElementById("btn-start").onclick = displayGame;
-// document.getElementById("btn-play-again").onclick = displayRestartedGame;
-// document.querySelector("body").onkeydown = togglePause;

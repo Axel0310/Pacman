@@ -1,7 +1,7 @@
 import {
   displayGame,
   displayRestartedGame,
-  togglePause,
+  // togglePause,
   displayGameOver,
   displayGameWon,
 } from "./page_animations.js";
@@ -48,10 +48,10 @@ const pacman = new Pawn(
     initColEnd: 11,
   },
   [
-    "../style/images/pacman-top.png",
-    "../style/images/pacman-right.png",
-    "../style/images/pacman-down.png",
-    "../style/images/pacman-left.png",
+    "./style/images/pacman-top.png",
+    "./style/images/pacman-right.png",
+    "./style/images/pacman-down.png",
+    "./style/images/pacman-left.png",
   ]
 );
 const inky = new Pawn("inky", {
@@ -61,10 +61,10 @@ const inky = new Pawn("inky", {
   initColEnd: 10,
 },
 [
-  "../style/images/inky-top.png",
-  "../style/images/inky-right.png",
-  "../style/images/inky-down.png",
-  "../style/images/inky-left.png",
+  "./style/images/inky-top.png",
+  "./style/images/inky-right.png",
+  "./style/images/inky-down.png",
+  "./style/images/inky-left.png",
 ]);
 const pinky = new Pawn("pinky", {
   initRowStart: 9,
@@ -73,10 +73,10 @@ const pinky = new Pawn("pinky", {
   initColEnd: 12,
 },
 [
-  "../style/images/pinky-top.png",
-  "../style/images/pinky-right.png",
-  "../style/images/pinky-down.png",
-  "../style/images/pinky-left.png",
+  "./style/images/pinky-top.png",
+  "./style/images/pinky-right.png",
+  "./style/images/pinky-down.png",
+  "./style/images/pinky-left.png",
 ]);
 const blinky = new Pawn("blinky", {
   initRowStart: 9,
@@ -85,10 +85,10 @@ const blinky = new Pawn("blinky", {
   initColEnd: 10,
 },
 [
-  "../style/images/blinky-top.png",
-  "../style/images/blinky-right.png",
-  "../style/images/blinky-down.png",
-  "../style/images/blinky-left.png",
+  "./style/images/blinky-top.png",
+  "./style/images/blinky-right.png",
+  "./style/images/blinky-down.png",
+  "./style/images/blinky-left.png",
 ]);
 const clyde = new Pawn("clyde", {
   initRowStart: 10,
@@ -97,10 +97,10 @@ const clyde = new Pawn("clyde", {
   initColEnd: 12,
 },
 [
-  "../style/images/clyde-top.png",
-  "../style/images/clyde-right.png",
-  "../style/images/clyde-down.png",
-  "../style/images/clyde-left.png",
+  "./style/images/clyde-top.png",
+  "./style/images/clyde-right.png",
+  "./style/images/clyde-down.png",
+  "./style/images/clyde-left.png",
 ]);
 const pawnArr = [pacman, inky, pinky, blinky, clyde];
 
