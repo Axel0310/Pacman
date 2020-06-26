@@ -19,7 +19,6 @@ const menuDelay = 2000;
 //Period when ghost can be caught
 const ghostPreyPeriod = 10000;
 
-
 let removeGhostPreyTimer = null;
 let warningTimer = null;
 let warningTimerDelay = null;
@@ -55,54 +54,66 @@ const pacman = new Pawn(
     "./style/images/pacman-left.png",
   ]
 );
-const inky = new Pawn("inky", {
-  initRowStart: 10,
-  initRowEnd: 11,
-  initColStart: 9,
-  initColEnd: 10,
-},
-[
-  "./style/images/inky-top.png",
-  "./style/images/inky-right.png",
-  "./style/images/inky-down.png",
-  "./style/images/inky-left.png",
-]);
-const pinky = new Pawn("pinky", {
-  initRowStart: 9,
-  initRowEnd: 10,
-  initColStart: 11,
-  initColEnd: 12,
-},
-[
-  "./style/images/pinky-top.png",
-  "./style/images/pinky-right.png",
-  "./style/images/pinky-down.png",
-  "./style/images/pinky-left.png",
-]);
-const blinky = new Pawn("blinky", {
-  initRowStart: 9,
-  initRowEnd: 10,
-  initColStart: 9,
-  initColEnd: 10,
-},
-[
-  "./style/images/blinky-top.png",
-  "./style/images/blinky-right.png",
-  "./style/images/blinky-down.png",
-  "./style/images/blinky-left.png",
-]);
-const clyde = new Pawn("clyde", {
-  initRowStart: 10,
-  initRowEnd: 11,
-  initColStart: 11,
-  initColEnd: 12,
-},
-[
-  "./style/images/clyde-top.png",
-  "./style/images/clyde-right.png",
-  "./style/images/clyde-down.png",
-  "./style/images/clyde-left.png",
-]);
+const inky = new Pawn(
+  "inky",
+  {
+    initRowStart: 10,
+    initRowEnd: 11,
+    initColStart: 9,
+    initColEnd: 10,
+  },
+  [
+    "./style/images/inky-top.png",
+    "./style/images/inky-right.png",
+    "./style/images/inky-down.png",
+    "./style/images/inky-left.png",
+  ]
+);
+const pinky = new Pawn(
+  "pinky",
+  {
+    initRowStart: 9,
+    initRowEnd: 10,
+    initColStart: 11,
+    initColEnd: 12,
+  },
+  [
+    "./style/images/pinky-top.png",
+    "./style/images/pinky-right.png",
+    "./style/images/pinky-down.png",
+    "./style/images/pinky-left.png",
+  ]
+);
+const blinky = new Pawn(
+  "blinky",
+  {
+    initRowStart: 9,
+    initRowEnd: 10,
+    initColStart: 9,
+    initColEnd: 10,
+  },
+  [
+    "./style/images/blinky-top.png",
+    "./style/images/blinky-right.png",
+    "./style/images/blinky-down.png",
+    "./style/images/blinky-left.png",
+  ]
+);
+const clyde = new Pawn(
+  "clyde",
+  {
+    initRowStart: 10,
+    initRowEnd: 11,
+    initColStart: 11,
+    initColEnd: 12,
+  },
+  [
+    "./style/images/clyde-top.png",
+    "./style/images/clyde-right.png",
+    "./style/images/clyde-down.png",
+    "./style/images/clyde-left.png",
+  ]
+);
 const pawnArr = [pacman, inky, pinky, blinky, clyde];
 
 const timerArr = {
@@ -177,7 +188,7 @@ function updateScore(nb = 0) {
 
 function removeGhostPrey(ghostElmt = null) {
   if (ghostElmt === null) {
-    if(warningTimer !== null){
+    if (warningTimer !== null) {
       clearInterval(warningTimer);
     }
     pawnArr.forEach((pawn) => {
@@ -192,14 +203,16 @@ function removeGhostPrey(ghostElmt = null) {
   }
 }
 
-function warnEndOfEnergizer(){
-  const ghostInPreyArr = pawnArr.filter( pawn => pawn.elmt().classList.contains("prey"));
+function warnEndOfEnergizer() {
+  const ghostInPreyArr = pawnArr.filter((pawn) =>
+    pawn.elmt().classList.contains("prey")
+  );
   ghostInPreyArr.forEach((pawn) => {
-      pawn.elmt().classList.remove("scared");
+    pawn.elmt().classList.remove("scared");
   });
   warningTimer = setInterval(() => {
     ghostInPreyArr.forEach((pawn) => {
-        pawn.elmt().classList.toggle("scared");
+      pawn.elmt().classList.toggle("scared");
     });
   }, 250);
 }
@@ -208,10 +221,10 @@ function makeGhostPrey() {
   if (removeGhostPreyTimer !== null) {
     clearTimeout(removeGhostPreyTimer);
   }
-  if(warningTimer !== null){
+  if (warningTimer !== null) {
     clearInterval(warningTimer);
   }
-  if(warningTimerDelay != null){
+  if (warningTimerDelay != null) {
     clearTimeout(warningTimerDelay);
   }
   pawnArr.forEach((pawn) => {
@@ -470,6 +483,7 @@ function moveLeft(pawn) {
   }, gameVelocity);
 }
 
+//Take the keyboard input to change the direction of Pacman
 function movePacman(evt) {
   if (pacman.elmt().classList.contains("inactive") === false) {
     clearInterval(pacman.mvtTimer);
@@ -576,6 +590,7 @@ function moveGhostRandom(ghost) {
   );
 }
 
+//Next 5 functions are used to make the ghosts move out of their spawn box
 function releaseBlinky() {
   let timer = null;
   timer = setTimeout(blinky.shiftRight.bind(blinky), gameVelocity);

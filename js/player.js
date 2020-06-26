@@ -31,9 +31,4 @@ export class Player {
     this.score = 0;
     this.life = 3;
   }
-
-  //Function for debugging purpose only
-  displayPlayer(){
-    console.log(`Score: ${this.score}, highscore: ${this.highScore}, life: ${this.life}`);
-  }
 }

@@ -1,6 +1,7 @@
 const instruPanel = document.querySelector(".instruction-panel");
 const instruToggle = document.getElementById("instruction-toggle");
 
+
 function toggleInstructionPanel() {
   if (instruPanel.classList.contains("instru-pan-hover")) {
     instruPanel.classList.toggle("instru-pan-hover");
@@ -110,3 +111,12 @@ export function displayRestartedGame() {
 instruToggle.onclick = toggleInstructionPanel;
 instruToggle.onmouseover = moveInInstructionPanel;
 instruToggle.onmouseleave = moveOutInstructionPanel;
+
+let resizeTimer;
+window.addEventListener("resize", () => {
+  instruPanel.classList.add("resize-transition-stopper");
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    instruPanel.classList.remove("resize-transition-stopper");
+  }, 400);
+});
