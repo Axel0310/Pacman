@@ -6,6 +6,6 @@ You can test it here: https://axel0310.github.io/Pacman/
 
 Enjoy !
 
-# Screenshots
+# Screenshot
 ![Pacman game screenshot](https://res.cloudinary.com/direuudpy/image/upload/v1599496768/Misc/pacman_rspinq.png)
 
